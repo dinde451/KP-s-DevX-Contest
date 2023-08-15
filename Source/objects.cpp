@@ -696,7 +696,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
-			case HeroClass::Druid:
+			case HeroClass::Bomoh:
 				object._oVar2 = TEXT_BOOKA;
 				break;
 			case HeroClass::Rogue:
@@ -717,7 +717,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
-			case HeroClass::Druid:
+			case HeroClass::Bomoh:
 				object._oVar2 = TEXT_BOOKB;
 				break;
 			case HeroClass::Rogue:
@@ -738,7 +738,7 @@ void AddCryptObject(Object &object, int a2)
 			switch (myPlayer._pClass) {
 			case HeroClass::Warrior:
 			case HeroClass::Barbarian:
-			case HeroClass::Druid:
+			case HeroClass::Bomoh:
 				object._oVar2 = TEXT_BOOKC;
 				break;
 			case HeroClass::Rogue:
@@ -2109,7 +2109,7 @@ void OperateChamberOfBoneBook(Object &questBook, bool sendmsg)
 	case HeroClass::Barbarian:
 		textdef = TEXT_BONER;
 		break;
-	case HeroClass::Druid:
+	case HeroClass::Bomoh:
 		textdef = TEXT_BONER;
 		break;
 	}
@@ -2256,7 +2256,7 @@ void OperateSlainHero(const Player &player, Object &corpse, bool sendmsg)
 		CreateMagicWeapon(corpse.position, ItemType::Sword, ICURS_BASTARD_SWORD, sendmsg, false);
 	} else if (player._pClass == HeroClass::Barbarian) {
 		CreateMagicWeapon(corpse.position, ItemType::Axe, ICURS_BATTLE_AXE, sendmsg, false);
-	} else if (player._pClass == HeroClass::Druid) {
+	} else if (player._pClass == HeroClass::Bomoh) {
 		CreateMagicWeapon(corpse.position, ItemType::Staff, ICURS_WAR_STAFF, sendmsg, false);
 	}
 	MyPlayer->Say(HeroSpeech::RestInPeaceMyFriend);
@@ -2919,7 +2919,7 @@ void OperateShrineOily(Player &player, Point spawnPosition)
 	case HeroClass::Barbarian:
 		ModifyPlrVit(player, 2);
 		break;
-	case HeroClass::Druid:
+	case HeroClass::Bomoh:
 		ModifyPlrVit(player, 2);
 		break;
 	case HeroClass::Monk:
@@ -3983,7 +3983,7 @@ void InitObjects()
 				case HeroClass::Barbarian:
 					spId = TEXT_BLINDING;
 					break;
-				case HeroClass::Druid:
+				case HeroClass::Bomoh:
 					spId = TEXT_BLINDING;
 					break;
 				}
@@ -4012,7 +4012,7 @@ void InitObjects()
 				case HeroClass::Barbarian:
 					spId = TEXT_BLOODY;
 					break;
-				case HeroClass::Druid:
+				case HeroClass::Bomoh:
 					spId = TEXT_BLOODY;
 					break;
 				}
@@ -4048,7 +4048,7 @@ void InitObjects()
 				case HeroClass::Barbarian:
 					spId = TEXT_BLOODWAR;
 					break;
-				case HeroClass::Druid:
+				case HeroClass::Bomoh:
 					spId = TEXT_BLOODWAR;
 					break;
 				}

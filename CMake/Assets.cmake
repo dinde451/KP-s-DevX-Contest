@@ -148,7 +148,8 @@ set(devilutionx_assets
   ui_art/dvl_lrpopup.clx
   ui_art/hf_titlew.clx
   ui_art/mainmenuw.clx
-  ui_art/supportw.clx)
+  ui_art/supportw.clx
+  pal/Mojomancer.trn)
 
 if(NOT USE_SDL1 AND NOT VITA)
   list(APPEND devilutionx_assets

@@ -564,7 +564,7 @@ void LoadHeros()
 		return;
 	const uint16_t numPortraits = ClxSpriteList { *ArtHero }.numSprites();
 
-	ArtHeroPortraitOrder = { 0, 1, 2, 2, 1, 0, 0, 3 };
+	ArtHeroPortraitOrder = { 0, 1, 2, 2, 1, 0, 3, 3 };
 	if (numPortraits >= 6) {
 		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Monk)] = 3;
 		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Bard)] = 4;
@@ -572,7 +572,7 @@ void LoadHeros()
 	}
 	if (numPortraits >= 7) {
 		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Barbarian)] = 6;
-		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Druid)] = 0;
+		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Bomoh)] = 3;
 	}
 
 	for (size_t i = 0; i <= enum_size<HeroClass>::value; ++i) {

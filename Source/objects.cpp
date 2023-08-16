@@ -2257,7 +2257,7 @@ void OperateSlainHero(const Player &player, Object &corpse, bool sendmsg)
 	} else if (player._pClass == HeroClass::Barbarian) {
 		CreateMagicWeapon(corpse.position, ItemType::Axe, ICURS_BATTLE_AXE, sendmsg, false);
 	} else if (player._pClass == HeroClass::Bomoh) {
-		CreateMagicWeapon(corpse.position, ItemType::Staff, ICURS_WAR_STAFF, sendmsg, false);
+		CreateMagicWeapon(corpse.position, ItemType::Sword, ICURS_SCIMITAR, sendmsg, false);
 	}
 	MyPlayer->Say(HeroSpeech::RestInPeaceMyFriend);
 	if (sendmsg)
@@ -2920,7 +2920,8 @@ void OperateShrineOily(Player &player, Point spawnPosition)
 		ModifyPlrVit(player, 2);
 		break;
 	case HeroClass::Bomoh:
-		ModifyPlrVit(player, 2);
+		ModifyPlrVit(player, 1);
+		ModifyPlrMag(player, 1);
 		break;
 	case HeroClass::Monk:
 		ModifyPlrStr(player, 1);

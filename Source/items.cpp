@@ -2683,6 +2683,11 @@ void CalcPlrItemVals(Player &player, bool loadgfx)
 		player._pDamageMod = player._pLevel * (player._pStrength + player._pDexterity) / 150;
 		if ((!player.InvBody[INVLOC_HAND_LEFT].isEmpty() && player.InvBody[INVLOC_HAND_LEFT]._itype != ItemType::Staff) || (!player.InvBody[INVLOC_HAND_RIGHT].isEmpty() && player.InvBody[INVLOC_HAND_RIGHT]._itype != ItemType::Staff))
 			player._pDamageMod /= 2; // Monks get half the normal damage bonus if they're holding a non-staff weapon
+		player._pDamageMod = player._pLevel * (player._pStrength + player._pDexterity) / 200;
+	} else if (player._pClass == HeroClass::Bomoh) {
+		player._pDamageMod = player._pLevel * (player._pStrength + player._pDexterity) / 150;
+		if ((!player.InvBody[INVLOC_HAND_LEFT].isEmpty() && player.InvBody[INVLOC_HAND_LEFT]._itype != ItemType::Sword) || (!player.InvBody[INVLOC_HAND_RIGHT].isEmpty() && player.InvBody[INVLOC_HAND_RIGHT]._itype != ItemType::Sword))
+			player._pDamageMod /= 2; // Mojo get half the normal damage bonus if they're holding a non-sword weapon
 	} else if (player._pClass == HeroClass::Bard) {
 		if (player.InvBody[INVLOC_HAND_LEFT]._itype == ItemType::Sword || player.InvBody[INVLOC_HAND_RIGHT]._itype == ItemType::Sword)
 			player._pDamageMod = player._pLevel * (player._pStrength + player._pDexterity) / 150;
@@ -4441,7 +4446,7 @@ void SpawnBoy(int lvl)
 					ivalue = INT_MAX;
 				break;
 			case HeroClass::Bomoh:
-				if (IsAnyOf(itemType, ItemType::Bow, ItemType::Staff))
+				if (IsAnyOf(itemType, ItemType::Bow, ItemType::Mace))
 					ivalue = INT_MAX;
 				break;
 			}

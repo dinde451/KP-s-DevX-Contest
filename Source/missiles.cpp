@@ -829,6 +829,7 @@ void GetDamageAmt(SpellID i, int *mind, int *maxd)
 	case SpellID::Warp:
 	case SpellID::Reflect:
 	case SpellID::Berserk:
+	case SpellID::ConfuseCurse:
 	case SpellID::Search:
 	case SpellID::RuneOfStone:
 		*mind = -1;
@@ -1262,6 +1263,58 @@ void AddBerserk(Missile &missile, AddMissileParameter &parameter)
 		monster.maxDamageSpecial = (GenerateRnd(10) + 120) * monster.maxDamageSpecial / 100 + slvl;
 		int lightRadius = leveltype == DTYPE_NEST ? 9 : 3;
 		monster.lightId = AddLight(monster.position.tile, lightRadius);
+		parameter.spellFizzled = false;
+	}
+}
+
+void AddConfuse(Missile &missile, AddMissileParameter &parameter)
+{
+	missile._miDelFlag = true;
+	parameter.spellFizzled = true;
+
+	if (missile.sourceType() == MissileSource::Trap)
+		return;
+
+	std::optional<Point> targetMonsterPosition = FindClosestValidPosition(
+	    [](Point target) {
+		    if (!InDungeonBounds(target)) {
+			    return false;
+		    }
+
+		    int monsterId = abs(dMonster[target.x][target.y]) - 1;
+		    if (monsterId < 0)
+			    return false;
+
+		    const Monster &monster = Monsters[monsterId];
+		    if (monster.isPlayerMinion())
+			    return false;
+		    if ((monster.flags & MFLAG_BERSERK) != 0)
+			    return false;
+		    if (monster.isUnique() || monster.ai == MonsterAIID::Diablo)
+			    return false;
+		    if (IsAnyOf(monster.mode, MonsterMode::FadeIn, MonsterMode::FadeOut, MonsterMode::Charge))
+			    return false;
+		    if ((monster.resistance & IMMUNE_MAGIC) != 0)
+			    return false;
+		    if ((monster.resistance & RESIST_MAGIC) != 0 && ((monster.resistance & RESIST_MAGIC) != 1 || !FlipCoin()))
+			    return false;
+
+		    return true;
+	    },
+	    parameter.dst, 0, 5);
+
+	if (targetMonsterPosition) {
+		auto &monster = Monsters[abs(dMonster[targetMonsterPosition->x][targetMonsterPosition->y]) - 1];
+		Player &player = *missile.sourcePlayer();
+		const int slvl = player.GetSpellLevel(SpellID::Search);
+		monster.flags |= MFLAG_BERSERK | MFLAG_GOLEM;
+		monster.minDamage = (GenerateRnd(10) + 120) * monster.minDamage / 100 + slvl;
+		monster.maxDamage = (GenerateRnd(10) + 120) * monster.maxDamage / 100 + slvl;
+		monster.minDamageSpecial = (GenerateRnd(10) + 120) * monster.minDamageSpecial / 100 + slvl;
+		monster.maxDamageSpecial = (GenerateRnd(10) + 120) * monster.maxDamageSpecial / 100 + slvl;
+		int lightRadius = leveltype == DTYPE_NEST ? 9 : 3;
+		monster.lightId = AddLight(monster.position.tile, lightRadius);
+		ApplyPlrDamage(DamageType::Physical, player, 6);
 		parameter.spellFizzled = false;
 	}
 }

@@ -250,6 +250,7 @@ void AddRuneOfImmolation(Missile &missile, AddMissileParameter &parameter);
 void AddRuneOfStone(Missile &missile, AddMissileParameter &parameter);
 void AddReflect(Missile &missile, AddMissileParameter &parameter);
 void AddBerserk(Missile &missile, AddMissileParameter &parameter);
+void AddConfuse(Missile &missile, AddMissileParameter &parameter);
 
 /**
  * var1: Direction to place the spawn

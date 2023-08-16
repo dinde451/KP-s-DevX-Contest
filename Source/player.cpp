@@ -2346,6 +2346,7 @@ void CreatePlayer(Player &player, HeroClass c)
 	case HeroClass::Warrior:
 	case HeroClass::Bard:
 	case HeroClass::Barbarian:
+	case HeroClass::Bomoh:
 		animWeaponId = PlayerWeaponGraphic::SwordShield;
 		break;
 	case HeroClass::Rogue:
@@ -2353,7 +2354,6 @@ void CreatePlayer(Player &player, HeroClass c)
 		break;
 	case HeroClass::Sorcerer:
 	case HeroClass::Monk:
-	case HeroClass::Bomoh:
 		animWeaponId = PlayerWeaponGraphic::Staff;
 		break;
 	}

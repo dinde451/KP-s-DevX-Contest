@@ -5,3 +5,4 @@
 #define DVL_ATTRIBUTE_HOT
 #define DVL_API_FOR_TEST
 #define DVL_REINITIALIZES
+#define MAX_SPELLS

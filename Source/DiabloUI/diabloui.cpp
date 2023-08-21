@@ -572,7 +572,7 @@ void LoadHeros()
 	}
 	if (numPortraits >= 7) {
 		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Barbarian)] = 6;
-		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Bomoh)] = 3;
+		ArtHeroPortraitOrder[static_cast<std::size_t>(HeroClass::Mojomancer)] = 3;
 	}
 
 	for (size_t i = 0; i <= enum_size<HeroClass>::value; ++i) {

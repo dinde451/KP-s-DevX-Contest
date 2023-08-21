@@ -1052,7 +1052,7 @@ void InitInv()
 	switch (MyPlayer->_pClass) {
 	case HeroClass::Warrior:
 	case HeroClass::Barbarian:
-	case HeroClass::Bomoh:
+	case HeroClass::Mojomancer:
 		pInvCels = LoadCel("data\\inv\\inv", static_cast<uint16_t>(SidePanelSize.width));
 		break;
 	case HeroClass::Rogue:

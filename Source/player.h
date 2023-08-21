@@ -61,9 +61,9 @@ enum class HeroClass : uint8_t {
 	Monk,
 	Bard,
 	Barbarian,
-	Bomoh,
+	Mojomancer,
 
-	LAST = Bomoh
+	LAST = Mojomancer
 };
 
 enum class CharacterAttribute : uint8_t {
@@ -200,7 +200,7 @@ constexpr std::array<char, 7> CharChar = {
 	'm', // monk
 	'b',
 	'c',
-	'd', // Bomoh
+	'd', // Mojomancer
 };
 
 /**

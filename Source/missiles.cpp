@@ -829,7 +829,7 @@ void GetDamageAmt(SpellID i, int *mind, int *maxd)
 	case SpellID::Warp:
 	case SpellID::Reflect:
 	case SpellID::Berserk:
-	case SpellID::ConfuseCurse:
+	case SpellID::Confuse:
 	case SpellID::Search:
 	case SpellID::RuneOfStone:
 		*mind = -1;
